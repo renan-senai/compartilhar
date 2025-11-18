@@ -45,3 +45,34 @@ CREATE TABLE movimentacoes (
     FOREIGN KEY (produto_id) REFERENCES produtos(id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
+
+-- Inserir: usuarios
+INSERT INTO usuarios (nome, email, senha, ativo) VALUES
+('Administrador', 'admin@petshop.com', '$2y$10$fPJWOc0KWoFN6BdCw.yz2.4PRaxRtnSy4iHDxR2fjKI3pkBVymqna', 1),
+('Gerente', 'gerente@petshop.com', '$2y$10$7Csw8NcBXKmEKQQEpoMjc.z4ONLpBy2NyGl5mseFCL7ZJUFrbjh3W', 1),
+('Vendedor', 'vendedor@petshop.com', '$2y$10$tG/GxNkKc.3mIIsyCEb/YOucrGsmlcTbk2b.acrRJnIcEJN56oKmu', 1);
+
+-- Inserir: categorias
+INSERT INTO categorias (nome) VALUES
+('Ração'),
+('Medicamento'),
+('Brinquedo'),
+('Acessório');
+
+-- Inserir: produtos
+INSERT INTO produtos (codigo, nome, categoria_id, preco_venda, estoque_atual, estoque_minimo) VALUES
+('RAC001', 'Ração Premium Cães Adultos 15kg', 1, 129.90, 45, 10),
+('MED001', 'Antipulgas e Carrapatos', 2, 189.90, 25, 10),
+('BRI001', 'Bolinha de Borracha Resistente', 3, 32.90, 55, 20),
+('ACE001', 'Coleira Ajustável Nylon', 5, 24.90, 42, 15);
+
+-- Inserir: movimentacoes
+INSERT INTO movimentacoes (produto_id, usuario_id, tipo_movimentacao, quantidade, data_movimentacao, estoque_anterior, estoque_posterior) VALUES
+(1, 1, 'ENTRADA', 50, '2025-11-01', 0, 50),
+(2, 1, 'ENTRADA', 40, '2025-11-01', 0, 40),
+(3, 2, 'ENTRADA', 25, '2025-11-02', 0, 25),
+(4, 1, 'ENTRADA', 30, '2025-11-03', 0, 30),
+(1, 3, 'SAIDA', 5, '2025-11-05', 50, 45),
+(2, 3, 'SAIDA', 8, '2025-11-06', 40, 32),
+(3, 4, 'SAIDA', 7, '2025-11-07', 25, 18),
+(4, 3, 'SAIDA', 5, '2025-11-08', 30, 25);
