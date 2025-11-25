@@ -1,9 +1,9 @@
 // Processar movimentação
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $produto_id = (int)($_POST['produto_id'] ?? 0);
-    $tipo = sanitizar($_POST['tipo'] ?? '');
+    $tipo = $_POST['tipo'] ?? '';
     $quantidade = (int)($_POST['quantidade'] ?? 0);
-    $data = sanitizar($_POST['data'] ?? '');
+    $data = $_POST['data'] ?? '';
     
     if ($produto_id == 0 || empty($tipo) || $quantidade <= 0 || empty($data)) {
         $mensagem = 'Preencha todos os campos!';
