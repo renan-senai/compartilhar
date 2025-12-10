@@ -5,7 +5,7 @@ $sql_ultimas = "SELECT t.*, c.nome as categoria_nome
                 WHERE t.id_usuario = :usuario_id 
                 ORDER BY t.data_transacao DESC, t.id_transacao DESC 
                 LIMIT 5";
-$stmt_ultimas = $pdo->prepare($sql_ultimas);
+$stmt_ultimas = $conn->prepare($sql_ultimas);
 $stmt_ultimas->bindParam(':usuario_id', $usuario_id);
 $stmt_ultimas->execute();
 $ultimas_transacoes = $stmt_ultimas->fetchAll();
