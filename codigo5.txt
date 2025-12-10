@@ -1,0 +1,32 @@
+<h2>Categorias</h2>
+    
+    <div>
+        <a href="categorias_formulario.php">Nova Categoria</a>
+    </div>
+    
+    <?php if (count($categorias) > 0): ?>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($categorias as $categoria): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($categoria['nome']); ?></td>
+                        <td><?php echo ucfirst($categoria['tipo']); ?></td>
+                        <td>
+                            <a href="categorias_formulario.php?id=<?php echo $categoria['id_categoria']; ?>">Editar</a>
+                            <a href="categorias_excluir.php?id=<?php echo $categoria['id_categoria']; ?>" 
+                               onclick="return confirm('Tem certeza que deseja excluir esta categoria?');">Excluir</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p>Nenhuma categoria cadastrada ainda.</p>
+    <?php endif; ?>
