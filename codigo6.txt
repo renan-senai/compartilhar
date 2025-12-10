@@ -1,0 +1,16 @@
+if ($id_categoria) {
+    // Buscar categoria para editar
+    $sql = "SELECT * FROM categoria WHERE id_categoria = :id_categoria AND id_usuario = :usuario_id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id_categoria', $id_categoria);
+    $stmt->bindParam(':usuario_id', $usuario_id);
+    $stmt->execute();
+    $categoria = $stmt->fetch();
+    
+    // Se não encontrou ou não pertence ao usuário, redireciona
+    if (!$categoria) {
+        set_mensagem_erro('Categoria não encontrada.');
+        header('Location: categorias_listar.php');
+        exit;
+    }
+}
