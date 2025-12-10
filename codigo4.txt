@@ -1,0 +1,6 @@
+// Buscar todas as categorias do usuário
+$sql = "SELECT * FROM categoria WHERE id_usuario = :usuario_id ORDER BY tipo, nome";
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(':usuario_id', $usuario_id);
+$stmt->execute();
+$categorias = $stmt->fetchAll();
