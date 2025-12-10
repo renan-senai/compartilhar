@@ -1,4 +1,3 @@
-<?php
 $sql_receitas = "SELECT SUM(valor) as total FROM transacao 
                  WHERE id_usuario = :usuario_id AND tipo = 'receita'";
 $stmt_receitas = $pdo->prepare($sql_receitas);
