@@ -1,0 +1,31 @@
+<h2>Últimas Transações</h2>
+    
+    <?php if (count($ultimas_transacoes) > 0): ?>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                    <th>Tipo</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($ultimas_transacoes as $transacao): ?>
+                    <tr>
+                        <td><?php echo date('d/m/Y', strtotime($transacao['data_transacao'])); ?></td>
+                        <td><?php echo htmlspecialchars($transacao['descricao']); ?></td>
+                        <td><?php echo htmlspecialchars($transacao['categoria_nome'] ?? 'Sem categoria'); ?></td>
+                        <td><?php echo ucfirst($transacao['tipo']); ?></td>
+                        <td>R$ <?php echo number_format($transacao['valor'], 2, ',', '.'); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        
+        <p><a href="transacoes_listar.php">Ver todas as transações</a></p>
+    <?php else: ?>
+        <p>Nenhuma transação cadastrada ainda.</p>
+        <p><a href="transacoes_formulario.php">Cadastrar primeira transação</a></p>
+    <?php endif; ?>
